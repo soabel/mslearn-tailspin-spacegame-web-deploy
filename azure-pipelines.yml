@@ -142,7 +142,7 @@ stages:
   #             packageForLinux: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
 
   - job: RunLoadTests
-    dependsOn: Deploy
+    # dependsOn: Deploy
     displayName: 'Run load tests'
     pool:
       vmImage: 'ubuntu-20.04'
