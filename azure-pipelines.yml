@@ -141,6 +141,29 @@ stages:
               WebAppName: '$(WebAppNameStaging)'
               packageForLinux: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
 
+  - job: RunAzureLoadTests
+    dependsOn: Deploy
+    displayName: 'Run Azure Load Testing'
+    pool:
+      vmImage: 'ubuntu-20.04'
+    variables:
+    - group: Release
+    steps:
+      - task: AzureLoadTest@1
+        inputs:
+          azureSubscription: 'Resource Manager - Tailspin - Space Game'
+          loadTestConfigFile: ''
+          resourceGroup: 'tailspin-space-game-rg'
+          loadTestResource: 'tailspinAzLoadTesting'
+          loadTestRunDescription: 'Run azure load test'
+          env: |
+            [
+              {
+              "name": "hostname",
+              "value": "tailspin-space-game-web-staging-15152.azurewebsites.net"
+              }
+            ]
+
   # - job: RunLoadTests
   #   # dependsOn: Deploy
   #   displayName: 'Run load tests'
