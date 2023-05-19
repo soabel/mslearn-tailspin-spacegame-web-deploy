@@ -157,6 +157,8 @@ stages:
     variables:
     - group: Release
     steps:
+      - download: current
+        artifact: config
       - task: AzureLoadTest@1
         inputs:
           azureSubscription: 'Resource Manager - Tailspin - Space Game'
