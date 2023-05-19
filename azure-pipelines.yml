@@ -159,10 +159,18 @@ stages:
     steps:
       - download: current
         artifact: config
+
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            pwd
+            
+            ls -lha
       - task: AzureLoadTest@1
         inputs:
           azureSubscription: 'Resource Manager - Tailspin - Space Game'
-          loadTestConfigFile: '$(Pipeline.Workspace)/config/azloadtestconfig.yaml'
+          loadTestConfigFile: 'azloadtestconfig.yaml'
           resourceGroup: 'tailspin-space-game-rg'
           loadTestResource: 'tailspinAzLoadTesting'
           loadTestRunDescription: 'Run azure load test'
