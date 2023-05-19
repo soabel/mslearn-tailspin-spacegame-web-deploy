@@ -4,3 +4,10 @@ displayName: demotest
 testPlan: LoadTest.jmx
 description: 'Load test the sample app'
 engineInstances: 1
+failureCriteria:
+  - avg(response_time_ms) > 10
+  - percentage(error) > 50
+  - GetCustomerDetails: avg(latency) >200
+autoStop:
+  errorPercentage: 80
+  timeWindow: 60
