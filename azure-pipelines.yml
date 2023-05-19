@@ -67,7 +67,7 @@ stages:
 
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Pipeline.Workspace)/azloadtestconfig.yaml'
+        targetPath: '**/azloadtestconfig.yaml'
         artifact: 'config'
         publishLocation: 'pipeline'
 
