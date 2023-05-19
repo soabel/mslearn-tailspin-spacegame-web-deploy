@@ -1,6 +1,6 @@
 version: v0.1
 testId: demotest
 displayName: demotest
-# testPlan: SampleApp.jmx
+testPlan: LoadTest.jmx
 description: 'Load test the sample app'
 engineInstances: 1
