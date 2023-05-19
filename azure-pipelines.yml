@@ -162,7 +162,7 @@ stages:
       - task: AzureLoadTest@1
         inputs:
           azureSubscription: 'Resource Manager - Tailspin - Space Game'
-          loadTestConfigFile: 'config/azloadtestconfig.yaml'
+          loadTestConfigFile: '$(Pipeline.Workspace)/config/azloadtestconfig.yaml'
           resourceGroup: 'tailspin-space-game-rg'
           loadTestResource: 'tailspinAzLoadTesting'
           loadTestRunDescription: 'Run azure load test'
